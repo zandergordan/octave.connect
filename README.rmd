@@ -1,0 +1,16 @@
+---
+title: "octave_connect"
+author: "Zander Gordan"
+date: "2/11/2021"
+output:
+  github_document:
+    html_preview: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The R script provided here defines a [knitr engine](https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html) that connects to [Octave](https://www.gnu.org/software/octave/) and passes it a command defining an array based on an R array.
+
+
