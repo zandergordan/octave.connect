@@ -14,3 +14,16 @@ knitr::opts_chunk$set(echo = TRUE)
 The R script provided here defines a [knitr engine](https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html) that connects to [Octave](https://www.gnu.org/software/octave/) and passes it a command defining an array based on an R array.
 
 
+```{r}
+source("octave_connect.R")
+example_array <- array(data = 1:16, dim = c(4,4))
+example_array
+```
+
+```{octave_connect, r_array = "example_array"}
+sum(example_array)
+```
+
+### Note
+
+`octave_connect` feeds your code to Octave as a single string, with `;` separating the lines. This means that only a single `ans =` can be returned to knitr. If you place a `;` on the final line of your `octave_connect` chunk, nothing will be printed to the chunk output. However, if you are copying existing Octave code, do not worry about deleting any `;` at the end of intermediate lines, as that is not necessary.
