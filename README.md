@@ -8,6 +8,8 @@ engine](https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html)
 that connects to [Octave](https://www.gnu.org/software/octave/) and
 passes it a command defining an array based on an R array.
 
+Once you have sourced the engine and defined an array:
+
 ``` r
 source("octave_connect.R")
 example_array <- array(data = 1:16, dim = c(4,4))
@@ -20,9 +22,13 @@ example_array
     ## [3,]    3    7   11   15
     ## [4,]    4    8   12   16
 
-``` octave_connect
+You can then use an `octave_connect` chunk to run commands from Octave.
+
+```` markdown
+```{octave_connect, r_array = "example_array", echo = FALSE}
 sum(example_array)
 ```
+````
 
     ## ans =
     ## 
