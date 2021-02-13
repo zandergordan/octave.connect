@@ -6,8 +6,8 @@ Authors@R:
            family = "Gordan",
            role = c("aut", "cre"),
            email = "me@zandergordan.com")
-Description: Once loaded, this package defines a custom Knitr engine called 
-    octave.connect with a chunk option called r_array, which takes a character
+Description: This package defines a custom Knitr engine called 
+    octave_connect with a chunk option called r_array, which takes a character
     string corresponding to the name of an R array and passes the data in that
     array to Octave, so that Octave commands in the chunk can manipulate the
     array.

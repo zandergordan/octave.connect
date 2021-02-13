@@ -13,11 +13,12 @@ passes it a command defining an array based on an R array.
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("zandergordan/octave_connect")
+devtools::install_github("zandergordan/octave.connect")
 ```
 
 ## Example
@@ -43,8 +44,8 @@ example_array
 ```
 
 And now we can use an `octave_connect` chunk to do things with the array
-in Octave (to view the full syntax, look at the .rmd instead of this
-rendered .md):
+in Octave (to view the full syntax, look at `README.rmd` instead of the
+rendered `README.md`):
 
 ``` octave_connect
 sum(example_array)
