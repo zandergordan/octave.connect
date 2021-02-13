@@ -1,38 +1,57 @@
 ---
-title: "octave_connect"
-author: "Zander Gordan"
-date: "2/11/2021"
-output:
-  github_document:
-    html_preview: false
+output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
 ```
 
-The R script provided here defines a [knitr engine](https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html) that connects to [Octave](https://www.gnu.org/software/octave/) and passes it a command defining an array based on an R array.
+# octave.connect
 
-Once you have sourced the engine and defined an array:
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package defines a [knitr
+engine](https://bookdown.org/yihui/rmarkdown-cookbook/custom-engine.html)
+that connects to [Octave](https://www.gnu.org/software/octave/) and
+passes it a command defining an array based on an R array.
+
+## Installation
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("zandergordan/octave_connect")
+```
+## Example
+
+Here is a basic example of using the package. First, anywhere in your rmarkdown file (typically in the `setup`) chunk:
+
+```{r setup}
+library(octave.connect)
+octave_connect("C:\\Users\\alexander.gordan\\AppData\\Local\\Programs\\GNU Octave\\Octave-6.1.0\\mingw64\\bin\\octave")
+```
+
+Then, define an R array:
 
 ```{r}
-source("octave_connect.R")
 example_array <- array(data = 1:16, dim = c(4,4))
 example_array
 ```
 
-You can then use an `octave_connect` chunk to run commands from Octave.
+And now we can use an `octave_connect` chunk to do things with the array in Octave (to view the full syntax, look at the .rmd instead of this rendered .md):
 
-````markdown
-`r ''````{octave_connect, r_array = "example_array", echo = FALSE}
-sum(example_array)
-```
-````
 
-```{octave_connect, r_array = "example_array", echo = FALSE}
+```{octave_connect, r_array = "example_array"}
 sum(example_array)
 ```
 
-### Note
 
-`octave_connect` feeds your code to Octave as a single string, with `;` separating the lines. This means that only a single `ans =` can be returned to knitr. If you place a `;` on the final line of your `octave_connect` chunk, nothing will be printed to the chunk output. However, if you are copying existing Octave code, do not worry about deleting any `;` at the end of intermediate lines, as that is not necessary.

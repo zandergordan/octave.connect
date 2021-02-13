@@ -1,0 +1,20 @@
+Package: octave.connect
+Title: Knitr Engine That Passes R Arrays to Octave
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Zander",
+           family = "Gordan",
+           role = c("aut", "cre"),
+           email = "me@zandergordan.com")
+Description: Once loaded, this package defines a custom Knitr engine called 
+    octave.connect with a chunk option called r_array, which takes a character
+    string corresponding to the name of an R array and passes the data in that
+    array to Octave, so that Octave commands in the chunk can manipulate the
+    array.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    knitr
